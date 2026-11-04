@@ -1,85 +1,40 @@
-# Wendy's Goals — setup guide
+<p align="center"><img src="icon-180.png" width="110" alt=""></p>
 
-A small web app for Wendy's daily goals. It runs on **GitHub Pages** (free hosting) and saves everything in **Supabase** (free database with sign-in). Only Wendy has an account.
+<h1 align="center">Habits: Grandma (Wendy's Goals)</h1>
+<p align="center"><em>Big buttons, gentle colors, and every goal in one place.</em></p>
+<p align="center"><a href="https://joshp523.github.io/wendys-app/"><b>▶ Open the app</b></a></p>
 
-## What's in this folder
+<p align="center"><img src="readme-showcase.jpg" alt="Habits: Grandma (Wendy's Goals) on a phone"></p>
 
-| File | What it is |
-|---|---|
-| `index.html` | The whole app |
-| `config.js` | Where you paste the Supabase address and key (step 4) |
-| `schema.sql` | Creates the database tables (step 2) |
-| `manifest.json`, `icon-180.png`, `icon-512.png` | Home-screen icon and name for the iPhone/iPad |
+Wendy's Goals is a goal tracker made for Grandma. Each area of life gets its own colored tile, and every goal is one tap away: a glass of water, a walk, twenty minutes of piano.
 
-Supabase occasionally renames menu items. If a label below doesn't match exactly, look for the closest one.
+## What she can track
 
----
+- **Health:** water, steps, exercise and supplements.
+- **Intellect:** reading, Spanish and more.
+- **Home:** decluttering and projects, a few times a week.
+- **Spiritual:** scripture study and a daily reflection on Christlike attributes.
+- **Ministering:** the people she looks after, with gentle "due now" reminders.
+- **Music, Family History and Preparedness.**
 
-## Part 1 — Set up Supabase (about 10 minutes)
+Goals repeat until she changes them, and anything can be daily, weekly or monthly.
 
-### 1. Create the project
-1. Go to **supabase.com**, sign up (free), and click **New project**.
-2. Name it `wendys-goals`, make up a **database password** (save it somewhere; you won't need it day to day), and pick the **region** closest to Wendy.
-3. Click **Create new project** and wait a minute or two while it starts.
+**Just visiting?** The sign-in screen has a *Take a tour* button, so anyone can try every screen with made-up goals. Nothing is saved, and Wendy's real goals stay private.
 
-### 2. Create the tables
-1. In the left sidebar, open **SQL Editor** and click **New query**.
-2. Open `schema.sql`, copy **everything**, paste it into the editor, and click **Run**.
-3. You should see "Success. No rows returned." In **Table Editor** you'll now see five tables: `goals`, `logs`, `people`, `contacts`, `reflections`.
+<table><tr><td align="center" valign="top"><img src="readme-screen-1.jpg" width="230" alt="Today"><br><sub>Today</sub></td><td align="center" valign="top"><img src="readme-screen-2.jpg" width="230" alt="Health"><br><sub>Health</sub></td><td align="center" valign="top"><img src="readme-screen-4.jpg" width="230" alt="Ministering"><br><sub>Ministering</sub></td></tr></table>
+## Why it's worth a look
 
-### 3. Create Wendy's login (and lock out everyone else)
-1. Go to **Authentication → Users** and click **Add user → Create new user**.
-2. Enter Wendy's **email** and a **password**, tick **Auto Confirm User**, and click **Create user**.
-3. Go to **Authentication → Sign In / Providers** (on some dashboards: **Authentication → Settings**) and turn **off** "Allow new users to sign up." Click **Save**. Now nobody else can create an account.
-4. Make sure the **Email** provider is enabled. It is on by default.
-
-### 4. Copy the address and key into `config.js`
-1. Go to **Project Settings → API** (on newer dashboards, **Project Settings → API Keys** and **Data API**).
-2. Copy the **Project URL**, which looks like `https://abcdxyz.supabase.co`.
-3. Copy the **anon public** key. Newer projects call it the **publishable** key; it starts with `sb_publishable_`. Either one works.
-   **Do not** use the `service_role` / **secret** key.
-4. Open `config.js` and paste them in:
-   ```js
-   SUPABASE_URL: 'https://abcdxyz.supabase.co',
-   SUPABASE_ANON_KEY: 'paste-the-key-here',
-   ```
-   The anon/publishable key is designed to be public. The security rules in `schema.sql` make sure only Wendy, once signed in, can read or change her data.
+- **Cool:** Pastel tiles, iris and lily-of-the-valley artwork, and text big enough to read without glasses.
+- **Innovative:** It was designed around one grandmother's actual goals, and it doubles as a gift: a tour mode lets friends try it safely.
+- **Impressive:** Daily, weekly and monthly goals, a reflection journal and a ministering tracker, all private to her and synced between her iPhone and iPad.
+- **Useful:** Tap, done. No menus to learn, nothing to set up, and it remembers everything.
 
 ---
 
-## Part 2 — Put the app on GitHub Pages (about 10 minutes)
+### On your phone
+Open the link in Safari (iPhone/iPad) or Chrome (Android), then choose **Share → Add to Home Screen**. It gets its own icon and opens full-screen, just like an app from the store.
 
-### 5. Upload the files
-1. Sign in at **github.com** and click **New repository**. Name it `wendys-goals` and make it **Public**. (Free GitHub Pages needs a public repo; her data stays private in Supabase.) Click **Create repository**.
-2. Click **uploading an existing file**, drag in all the files from this folder (`index.html`, `config.js`, `manifest.json`, both icons; `schema.sql` and this README are optional), then click **Commit changes**.
+### More apps by Josh Riley
+[The Riley Rag](https://joshp523.github.io/RileyRag/) · [QuipRash](https://joshp523.github.io/Quip-game-app/) · [Word Games](https://joshp523.github.io/Word-Games/) · [Russian Verbs](https://joshp523.github.io/russian/) · [Riley Rangers](https://joshp523.github.io/Rangers-app/) · [Habits: Josh](https://joshp523.github.io/daily-discipline/) · [Habits: Meishe](https://joshp523.github.io/Habit-tracker-app-Meishe/) · [Writing](https://joshp523.github.io/writing-app/)
 
-### 6. Turn on GitHub Pages
-1. In the repository, go to **Settings → Pages**.
-2. Under **Build and deployment**, set **Source: Deploy from a branch**, **Branch: main**, folder **/ (root)**, and click **Save**.
-3. After a minute or two the page shows the address, for example `https://your-username.github.io/wendys-goals/`.
-
-### 7. Tell Supabase the app's address (for "Forgot password?")
-1. Back in Supabase, go to **Authentication → URL Configuration**.
-2. Set **Site URL** to the GitHub Pages address from step 6, including the final `/`.
-3. Add the same address under **Redirect URLs** and click **Save**.
-
----
-
-## Part 3 — Wendy's iPhone and iPad
-
-1. Open the GitHub Pages address in **Safari**.
-2. Sign in with her email and password, keeping **Keep me signed in** ticked.
-3. Tap the **Share** button, then **Add to Home Screen**, then **Add**. She now has a "Wendy's Goals" icon that opens like an app.
-4. Do the same on the iPad.
-
-The first time she signs in, the app creates starter goals: water (8 glasses), steps (8,000), bike ride, weightlifting, stretching, flexibility, reading (1 book a week), Spanish (20 min a day), declutter, Book of Mormon reading, piano, harp, and photos with Dad. She can change or stop any of them with **Change**, and add new ones (supplements, a second study subject, preparedness goals, ministering people) with the **+ Add** buttons.
-
----
-
-## Good to know
-
-- **Changing things later:** edit the file on GitHub (open it and click the pencil icon), then commit. The site updates within a minute or two.
-- **Free Supabase projects pause after about a week with no use.** If Wendy uses the app most days, this won't happen. If it does, sign in to supabase.com and click **Restore project**; her data is kept.
-- **Forgot password:** she types her email on the sign-in screen and taps **Forgot password?**. The email link opens the app, where she picks a new password. You can also reset it yourself under **Authentication → Users**.
-- **Backups:** in Supabase **Table Editor**, any table can be exported to CSV.
-- **Weeks** run Sunday through Saturday. **Months** are calendar months.
+<sub>Built by Josh Riley. Setup notes for whoever maintains it are in [SETUP.md](SETUP.md).</sub>
