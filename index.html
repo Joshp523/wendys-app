@@ -8,15 +8,15 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Wendy's Goals">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#FFFBF4">
+<meta name="theme-color" content="#F9FAEE">
 <link rel="apple-touch-icon" href="icon-180.png">
-<link rel="icon" type="image/png" href="icon-180.png">
+<link rel="icon" type="image/png" href="favicon-32.png">
 <link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
 <style>
-:root{--bg:#FFFBF4;--ink:#3A3340;--muted:#6B6170;--line:#F1EADF;--border:#EDE4D6;--field:#CFC3B0;--ac:#5A4790;--tint:#E7E1F5}
+:root{--bg:#F9FAEE;--ink:#3B3952;--muted:#646179;--line:#ECEDE0;--border:#E3E5D6;--field:#BDBCD0;--ac:#585892;--tint:#E8E2F5}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.4 Nunito,system-ui,-apple-system,sans-serif;-webkit-tap-highlight-color:transparent}
@@ -60,11 +60,11 @@ button,input,select,textarea{font-family:inherit}
 .row label{display:flex;align-items:center;gap:14px;flex:1;min-height:60px;cursor:pointer}
 input[type=checkbox]{width:28px;height:28px;margin:0;flex:none;accent-color:var(--ac)}
 .field{width:100%;height:56px;border:1.5px solid var(--field);border-radius:14px;padding:0 16px;font:400 19px Nunito,sans-serif;color:var(--ink);background:#fff;-webkit-appearance:none;appearance:none}
-select.field{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%233A3340' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center;padding-right:48px}
+select.field{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%233B3952' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center;padding-right:48px}
 textarea.field{height:auto;min-height:110px;padding:14px 16px;resize:vertical;line-height:1.4}
 .field.num{width:104px;flex:none;text-align:center;font-weight:800;font-size:20px;padding:0 8px}
 .lbl{display:block;font-size:18px;font-weight:800;margin:18px 0 8px;padding:0}
-.add{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border:2px dashed #D9CCB8;border-radius:18px;background:transparent;font:700 18px Nunito,sans-serif;color:#4F4556;width:100%;cursor:pointer;text-decoration:none}
+.add{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border:2px dashed #CFCEDF;border-radius:18px;background:transparent;font:700 18px Nunito,sans-serif;color:#4D4A66;width:100%;cursor:pointer;text-decoration:none}
 .add.sm{min-height:52px;margin-top:12px;font-size:17px}
 .donel{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--ac);font-size:19px}
 .sub{padding:6px 0 16px}
@@ -78,9 +78,9 @@ textarea.field{height:auto;min-height:110px;padding:14px 16px;resize:vertical;li
 .log .r{display:flex;align-items:center;gap:2px;flex:none}
 .x{width:44px;height:44px;border:0;background:none;font-size:24px;line-height:1;color:var(--muted);cursor:pointer;border-radius:50%}
 .chip{flex:none;font-size:15px;font-weight:800;padding:5px 12px;border-radius:999px}
-.chip.due{background:#F8DDE4;color:#8E3550}
-.chip.soon{background:#FBF0C8;color:#6E530E}
-.chip.ok{background:#E3EBD5;color:#4F6330}
+.chip.due{background:#F3E1EC;color:#7E3D62}
+.chip.soon{background:#F6F0C9;color:#675410}
+.chip.ok{background:#E5EED6;color:#4A6227}
 .person{padding:16px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
 .person h3{font:800 20px Nunito,sans-serif}
 .scale{display:flex;gap:8px;margin-top:10px}
@@ -103,10 +103,17 @@ fieldset.attr .scale{clear:both;padding-top:10px;margin-top:0}
 .login{max-width:440px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 72px) 28px 40px;display:flex;flex-direction:column;align-items:center}
 .login form{width:100%;display:flex;flex-direction:column;gap:20px;margin-top:36px}
 .login label.f{display:flex;flex-direction:column;gap:8px;font-weight:800;font-size:18px;text-align:left}
-.msg{font-size:17px;font-weight:700;padding:12px 14px;border-radius:12px;background:#F8DDE4;color:#7A2C44}
-.msg.good{background:#E3EBD5;color:#4F6330}
-#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#3A3340;color:#fff;padding:14px 22px;border-radius:14px;font-weight:700;font-size:17px;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;max-width:90vw;text-align:center;z-index:10}
+.msg{font-size:17px;font-weight:700;padding:12px 14px;border-radius:12px;background:#F3E1EC;color:#7E3D62}
+.msg.good{background:#E5EED6;color:#4A6227}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#3B3952;color:#fff;padding:14px 22px;border-radius:14px;font-weight:700;font-size:17px;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;max-width:90vw;text-align:center;z-index:10}
 #toast.show{opacity:1;transform:translate(-50%,0)}
+.art{display:block;width:170px;height:auto}
+.tourbtn{margin-top:26px;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--field);background:transparent;font:700 16px Nunito,sans-serif;color:var(--muted);cursor:pointer}
+.tourbar{position:sticky;top:0;z-index:5;background:#3B3952;color:#fff;padding:calc(env(safe-area-inset-top) + 6px) 16px 6px}
+.tourbar .in{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:16px;font-weight:700}
+.tourbar button{flex:none;min-height:40px;padding:0 16px;border-radius:999px;border:0;background:#fff;color:#3B3952;font:800 16px Nunito,sans-serif;cursor:pointer}
+body.tour .hd{padding-top:8px}
+body.tour .top{padding-top:18px !important}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 </head>
@@ -125,14 +132,14 @@ const NAME = cfg.NAME || 'Wendy';
 const cfgOK = !!(cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY && !/YOUR-/.test(cfg.SUPABASE_URL + cfg.SUPABASE_ANON_KEY));
 
 const SECTIONS = [
-  { key: 'health',      name: 'Health',         bg: '#DDF1E4', fg: '#2F6B4A', icon: 'heart' },
-  { key: 'intellect',   name: 'Intellect',      bg: '#E7E1F5', fg: '#5A4790', icon: 'book' },
-  { key: 'home',        name: 'Home',           bg: '#FBE3D3', fg: '#8A4B26', icon: 'house' },
-  { key: 'spiritual',   name: 'Spiritual',      bg: '#DCEBF7', fg: '#2C5A80', icon: 'sun' },
-  { key: 'ministering', name: 'Ministering',    bg: '#F8DDE4', fg: '#8E3550', icon: 'people' },
-  { key: 'music',       name: 'Music',          bg: '#FBF0C8', fg: '#7A5D12', icon: 'music' },
-  { key: 'family',      name: 'Family History', bg: '#E3EBD5', fg: '#4F6330', icon: 'tree' },
-  { key: 'prep',        name: 'Preparedness',   bg: '#D7EFEF', fg: '#2B6464', icon: 'jar' }
+  { key: 'health',      name: 'Health',         bg: '#DCEFE4', fg: '#2D6A50', icon: 'heart' },
+  { key: 'intellect',   name: 'Intellect',      bg: '#E8E2F5', fg: '#57478F', icon: 'book' },
+  { key: 'home',        name: 'Home',           bg: '#F7E6D6', fg: '#80502B', icon: 'house' },
+  { key: 'spiritual',   name: 'Spiritual',      bg: '#DCE6F7', fg: '#30528A', icon: 'sun' },
+  { key: 'ministering', name: 'Ministering',    bg: '#F3E1EC', fg: '#7E3D62', icon: 'people' },
+  { key: 'music',       name: 'Music',          bg: '#F6F0C9', fg: '#675410', icon: 'music' },
+  { key: 'family',      name: 'Family History', bg: '#E5EED6', fg: '#4A6227', icon: 'tree' },
+  { key: 'prep',        name: 'Preparedness',   bg: '#D7EEEB', fg: '#28625E', icon: 'jar' }
 ];
 const SEC = Object.fromEntries(SECTIONS.map(s => [s.key, s]));
 
@@ -169,7 +176,7 @@ const IC = {
   check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>'
 };
 const icon = (name, color, size) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="${name === 'check' ? 2.6 : 1.8}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[name]}</svg>`;
-const FLOWER = '<svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="24" r="16" fill="#F8DDE4"/><circle cx="71" cy="41" r="16" fill="#FBF0C8"/><circle cx="62" cy="68" r="16" fill="#DDF1E4"/><circle cx="34" cy="68" r="16" fill="#DCEBF7"/><circle cx="25" cy="41" r="16" fill="#E7E1F5"/><circle cx="48" cy="48" r="11" fill="#FBE3D3" stroke="#E9C6AE" stroke-width="2"/></svg>';
+const FLOWER = '<img class="art" src="flowers.png" alt="" width="170" height="175">';
 const drop = full => `<svg width="32" height="36" viewBox="0 0 24 24" fill="${full ? '#9BCDE3' : 'none'}" stroke="${full ? '#4E8FB0' : '#A9BCC6'}" stroke-width="1.6" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>`;
 
 /* ───────── Small helpers ───────── */
@@ -212,9 +219,109 @@ const storage = {
 const sb = cfgOK && window.supabase ? window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY, {
   auth: { storage, persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
 }) : null;
+let api = sb;   // where goals and logs are read and saved: Supabase, or the tour's make-believe copy
+
+/* ───────── Tour ("Just visiting") ─────────
+   A visitor gets a made-up set of goals kept only in this browser tab's memory.
+   It never reads or writes the real database and never touches the sign-in,
+   so Wendy's account and data are not affected in any way. */
+function demoDB() {
+  const T = { goals: [], logs: [], people: [], contacts: [], reflections: [] };
+  const DEF = {
+    goals: { grp: null, amount: null, period: 'day', times: 1, unit: null, entry: 'tap', action_label: null, note_label: null, details: null, sort_order: 0, active: true },
+    logs: { minutes: null, count: null }, people: { every_days: 14, sort_order: 0, active: true }, contacts: { notes: null }, reflections: { thoughts: null }
+  };
+  let n = 0;
+  const today = todayStr(), ago = k => addDays(today, -k);
+  const G = (section, name, x = {}) => { const g = { ...DEF.goals, id: 'g' + (++n), user_id: 'tour', section, name, track: 'check', sort_order: n, created_at: new Date(2026, 0, 1).toISOString(), ...x }; T.goals.push(g); return g; };
+  const L = (g, k, x = {}) => T.logs.push({ ...DEF.logs, id: 'l' + (++n), user_id: 'tour', goal_id: g.id, log_date: ago(k), created_at: parse(ago(k)).toISOString(), ...x });
+
+  const vitD = G('health', 'Vitamin D', { grp: 'Supplements' }), calc = G('health', 'Calcium', { grp: 'Supplements' }), fish = G('health', 'Fish oil', { grp: 'Supplements' });
+  const water = G('health', 'Water', { track: 'count', amount: 8, unit: 'glasses' });
+  const steps = G('health', 'Steps', { grp: 'Exercise', track: 'count', amount: 8000, unit: 'steps', entry: 'number' });
+  const bike = G('health', 'Bike ride', { grp: 'Exercise' }), lift = G('health', 'Weightlifting', { grp: 'Exercise' });
+  const stretch = G('health', 'Stretching', { grp: 'Exercise' }), flex = G('health', 'Flexibility', { grp: 'Exercise' });
+  const read = G('intellect', 'Reading & listening', { period: 'week', action_label: 'I finished a book', note_label: 'Now reading', details: 'Little Women' });
+  const span = G('intellect', 'Spanish', { track: 'minutes', amount: 20 });
+  const garden = G('intellect', 'Gardening', { track: 'minutes', amount: 15 });
+  const declutter = G('home', 'Declutter', { track: 'minutes', amount: 60, period: 'week', times: 3 });
+  const garage = G('home', 'Organize the garage', { track: 'minutes', amount: 30, period: 'week', times: 2 });
+  const kitchen = G('home', 'Tidy the kitchen');
+  const scripture = G('spiritual', 'Read the Book of Mormon', { track: 'minutes', amount: 30 });
+  const temple = G('spiritual', 'Temple', { period: 'month', times: 2 });
+  const piano = G('music', 'Piano', { track: 'minutes', amount: 20, period: 'week', times: 5 });
+  const harp = G('music', 'Harp', { track: 'minutes', amount: 30, period: 'week', times: 3 });
+  const photos = G('family', 'Scan old family photos', { track: 'minutes', amount: 60, period: 'week' });
+  const food = G('prep', 'Rotate food storage', { period: 'month' });
+  const kits = G('prep', 'Check emergency kits', { period: 'month' });
+  const canning = G('prep', 'Learn canning', { track: 'minutes', amount: 60, period: 'week' });
+
+  // Today: partly done, so there is something left to try.
+  L(water, 0, { count: 5 }); L(steps, 0, { count: 6240 }); L(vitD, 0); L(calc, 0); L(lift, 0); L(stretch, 0);
+  L(span, 0, { minutes: 15 }); L(scripture, 0, { minutes: 20 }); L(piano, 0, { minutes: 25 }); L(kitchen, 0);
+  // The past five weeks, so weekly and monthly progress looks lived-in.
+  for (let k = 1; k <= 35; k++) {
+    if (k % 5 !== 3) L(vitD, k); if (k % 4 !== 1) L(calc, k); if (k % 3 === 0) L(fish, k);
+    L(water, k, { count: Math.min(8, 5 + k % 4) }); L(steps, k, { count: 4800 + (k * 1370) % 5200 });
+    if (k % 3 === 0) L(bike, k); if (k % 2 === 0) L(lift, k); if (k % 4 !== 1) L(stretch, k); if (k % 3 === 1) L(flex, k);
+    L(span, k, { minutes: 10 + (k % 3) * 5 }); if (k % 2 === 0) L(garden, k, { minutes: 15 });
+    L(scripture, k, { minutes: k % 4 === 2 ? 15 : 30 }); if (k % 3 !== 2) L(kitchen, k);
+    if ([2, 5, 9, 12, 16, 19, 23, 26, 30].includes(k)) L(declutter, k, { minutes: 60 });
+    if ([4, 11, 18, 25].includes(k)) L(garage, k, { minutes: 30 });
+    if ([1, 2, 4, 5].includes(k % 7)) L(piano, k, { minutes: 20 }); if ([3, 6].includes(k % 7)) L(harp, k, { minutes: 30 });
+    if (k % 7 === 3) L(photos, k, { minutes: 45 }); if (k % 7 === 2) L(canning, k, { minutes: 30 });
+  }
+  [6, 13, 20, 27].forEach(k => L(read, k)); [9, 24].forEach(k => L(temple, k)); L(kits, 2); L(food, 30);
+
+  const P = (name, every_days) => { const p = { ...DEF.people, id: 'p' + (++n), user_id: 'tour', name, every_days, sort_order: n, created_at: new Date(2026, 0, 1).toISOString() }; T.people.push(p); return p; };
+  const C = (p, k, kind, notes = null) => T.contacts.push({ id: 'c' + (++n), user_id: 'tour', person_id: p.id, kind, contact_date: ago(k), notes, created_at: parse(ago(k)).toISOString() });
+  const ruth = P('Sister Ruth Ellis', 14), morgans = P('The Morgan family', 30), ken = P('Brother Ken Alvarez', 7);
+  C(ken, 2, 'text', 'Asked how his knee is doing'); C(morgans, 10, 'visit', 'Brought banana bread'); C(ruth, 16, 'call');
+  C(ken, 9, 'card'); C(ruth, 31, 'visit', 'Looked at her garden together');
+
+  const thoughts = { 1: 'Tried to listen more than I talked today.', 3: 'Felt the Spirit while reading this morning.' };
+  for (let k = 1; k <= 6; k++) {
+    const scores = {}; ATTRS.forEach(([a], i) => { scores[a] = 3 + ((i + k) % 3); });
+    T.reflections.push({ user_id: 'tour', ref_date: ago(k), scores, thoughts: thoughts[k] || null, updated_at: parse(ago(k)).toISOString() });
+  }
+
+  const cmp = (a, b) => a == null ? (b == null ? 0 : -1) : b == null ? 1 : a < b ? -1 : a > b ? 1 : 0;
+  class Q {
+    constructor(t) { this.t = t; this.f = []; this.o = []; this.op = 'select'; this.lim = 0; this.one = false; this.head = false; }
+    select(c, o) { if (o && o.head) this.head = true; return this; }
+    eq(k, v) { this.f.push(r => r[k] === v); return this; }
+    gte(k, v) { this.f.push(r => r[k] >= v); return this; }
+    lte(k, v) { this.f.push(r => r[k] <= v); return this; }
+    order(k, o) { this.o.push([k, !!(o && o.ascending === false)]); return this; }
+    limit(l) { this.lim = l; return this; }
+    single() { this.one = true; return this; }
+    insert(r) { this.op = 'insert'; this.rows = [].concat(r); return this; }
+    upsert(r, o) { this.op = 'upsert'; this.rows = [].concat(r); this.keys = String((o && o.onConflict) || 'id').split(','); return this; }
+    update(v) { this.op = 'update'; this.vals = v; return this; }
+    delete() { this.op = 'delete'; return this; }
+    then(ok, bad) { return new Promise(r => setTimeout(r, 40)).then(() => this.run()).then(ok, bad); }
+    run() {
+      const rows = T[this.t], hit = r => this.f.every(f => f(r));
+      let out;
+      if (this.op === 'insert') out = this.rows.map(r => { const x = { ...DEF[this.t], id: 't' + (++n), user_id: 'tour', created_at: new Date().toISOString(), ...r }; rows.push(x); return x; });
+      else if (this.op === 'upsert') out = this.rows.map(r => { const x = rows.find(y => this.keys.every(k => y[k] === r[k])); if (x) return Object.assign(x, r); const y = { ...DEF[this.t], ...r }; rows.push(y); return y; });
+      else if (this.op === 'update') { out = rows.filter(hit); out.forEach(x => Object.assign(x, this.vals)); }
+      else if (this.op === 'delete') { out = rows.filter(hit); T[this.t] = rows.filter(x => !hit(x)); }
+      else {
+        out = rows.filter(hit).sort((a, b) => { for (const [k, d] of this.o) { const c = cmp(a[k], b[k]); if (c) return d ? -c : c; } return 0; });
+        if (this.lim) out = out.slice(0, this.lim);
+        if (this.head) return { data: null, count: out.length, error: null };
+      }
+      const copy = JSON.parse(JSON.stringify(out));
+      return { data: this.one ? (copy[0] || null) : copy, error: null };
+    }
+  }
+  return { from: t => new Q(t) };
+}
 
 /* ───────── State ───────── */
 const S = {
+  tour: false, realUser: null,
   user: null, loaded: false, loadError: null, recovery: false,
   date: todayStr(), goals: [], logs: [], refl: {}, people: [], contacts: [],
   editGroups: {}, other: {}, form: null, editPeople: false, mform: null, draft: null, past: null,
@@ -232,14 +339,14 @@ function fail(e) {
 /* ───────── Loading data ───────── */
 async function loadAll() {
   const [g, p, c] = await Promise.all([
-    sb.from('goals').select('*').eq('active', true).order('sort_order').order('created_at'),
-    sb.from('people').select('*').eq('active', true).order('sort_order').order('created_at'),
-    sb.from('contacts').select('*').order('contact_date', { ascending: false }).order('created_at', { ascending: false }).limit(1000)
+    api.from('goals').select('*').eq('active', true).order('sort_order').order('created_at'),
+    api.from('people').select('*').eq('active', true).order('sort_order').order('created_at'),
+    api.from('contacts').select('*').order('contact_date', { ascending: false }).order('created_at', { ascending: false }).limit(1000)
   ]);
   for (const r of [g, p, c]) if (r.error) throw r.error;
   S.goals = g.data; S.people = p.data; S.contacts = c.data;
   if (!S.goals.length) {
-    const { count, error } = await sb.from('goals').select('id', { count: 'exact', head: true });
+    const { count, error } = await api.from('goals').select('id', { count: 'exact', head: true });
     if (error) throw error;
     if (!count) await seed();
   }
@@ -247,7 +354,7 @@ async function loadAll() {
 }
 async function seed() {
   const rows = SEED.map((s, i) => ({ grp: null, period: 'day', times: 1, amount: null, unit: null, entry: 'tap', ...s, sort_order: i + 1 }));
-  const { data, error } = await sb.from('goals').insert(rows).select();
+  const { data, error } = await api.from('goals').insert(rows).select();
   if (error) throw error;
   S.goals = data.sort((a, b) => a.sort_order - b.sort_order);
 }
@@ -256,8 +363,8 @@ async function loadRange() {
   const from = [weekStart(d), monthStart(d)].sort()[0];
   const to = [addDays(weekStart(d), 6), monthEnd(d)].sort()[1];
   const [l, r] = await Promise.all([
-    sb.from('logs').select('*').gte('log_date', from).lte('log_date', to).order('created_at'),
-    sb.from('reflections').select('*').gte('ref_date', from).lte('ref_date', to)
+    api.from('logs').select('*').gte('log_date', from).lte('log_date', to).order('created_at'),
+    api.from('reflections').select('*').gte('ref_date', from).lte('ref_date', to)
   ]);
   if (l.error) throw l.error;
   if (r.error) throw r.error;
@@ -303,7 +410,7 @@ function addLog(g, fields) {
   const row = { key: 'k' + Math.random().toString(36).slice(2), id: null, goal_id: g.id, log_date: S.date, minutes: null, count: null, created_at: new Date().toISOString(), ...fields };
   S.logs.push(row); render();
   queue(async () => {
-    const { data, error } = await sb.from('logs').insert({ goal_id: g.id, log_date: row.log_date, minutes: row.minutes, count: row.count }).select().single();
+    const { data, error } = await api.from('logs').insert({ goal_id: g.id, log_date: row.log_date, minutes: row.minutes, count: row.count }).select().single();
     if (error) throw error;
     row.id = data.id;
   });
@@ -312,7 +419,7 @@ function delLog(row) {
   S.logs = S.logs.filter(x => x !== row); render();
   queue(async () => {
     if (!row.id) return;
-    const { error } = await sb.from('logs').delete().eq('id', row.id);
+    const { error } = await api.from('logs').delete().eq('id', row.id);
     if (error) throw error;
   });
 }
@@ -327,13 +434,13 @@ function setCount(g, v) {
   row.count = v; render();
   queue(async () => {
     if (!row.id) return;
-    const { error } = await sb.from('logs').update({ count: row.count }).eq('id', row.id);
+    const { error } = await api.from('logs').update({ count: row.count }).eq('id', row.id);
     if (error) throw error;
   });
 }
 async function saveGoalFields(g, fields) {
   Object.assign(g, fields);
-  const { error } = await sb.from('goals').update(fields).eq('id', g.id);
+  const { error } = await api.from('goals').update(fields).eq('id', g.id);
   if (error) return fail(error);
   toast('Saved');
 }
@@ -440,10 +547,10 @@ function viewLogin() {
       ${m ? `<p class="msg${m.good ? ' good' : ''}" role="alert">${esc(m.text)}</p>` : ''}
       <label class="f">Email<input id="email" class="field" type="email" autocomplete="email" autocapitalize="off" required></label>
       <label class="f">Password<input id="pw" class="field" type="password" autocomplete="current-password" required></label>
-      <label style="display:flex;align-items:center;gap:12px;font-size:18px;min-height:44px;--ac:#5A4790"><input id="keep" type="checkbox" ${keep ? 'checked' : ''}> Keep me signed in</label>
-      <button class="btn main" type="submit" style="min-height:60px;font-size:20px;--ac:#5A4790">Sign in</button>
+      <label style="display:flex;align-items:center;gap:12px;font-size:18px;min-height:44px"><input id="keep" type="checkbox" ${keep ? 'checked' : ''}> Keep me signed in</label>
+      <button class="btn main" type="submit" style="min-height:60px;font-size:20px">Sign in</button>
     </form>
-    <button class="link" data-act="forgot" style="margin-top:18px;font-size:18px;--ac:#4A5A8C">Forgot password?</button></main>`;
+    <button class="link" data-act="forgot" style="margin-top:18px;font-size:18px">Forgot password?</button></main>`;
 }
 function viewRecovery() {
   return `<main class="login">${FLOWER}<h1 style="font-size:30px;margin-top:22px">Choose a new password</h1>
@@ -468,7 +575,7 @@ function viewToday() {
   }).join('');
   return `<main class="wrap" style="padding-top:calc(env(safe-area-inset-top) + 18px);padding-bottom:40px">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><p style="font-size:18px;font-weight:700;color:var(--muted)">${longDate(S.date)}</p>
-    <button class="link" data-act="signout" style="--ac:#4A5A8C">Sign out</button></div>
+    <button class="link" data-act="signout">Sign out</button></div>
     <h1 style="font-size:34px;margin-top:4px">${greet}, ${esc(NAME)}</h1><div class="tiles">${tiles}</div></main>`;
 }
 function viewSection(key) {
@@ -533,7 +640,7 @@ function viewReflection() {
     ${[1, 2, 3, 4, 5].map(n => `<label class="pick"><input type="radio" name="${k}" value="${n}" ${d.scores[k] === n ? 'checked' : ''} data-chg="score"><span>${n}</span><span class="sr"> out of 5</span></label>`).join('')}
     </div></fieldset>`).join('');
   return `<div style="${pageStyle(sec)}">${header(sec, { back: '#/s/spiritual', backLabel: 'Spiritual', title: 'Daily reflection', noIcon: true })}
-    <main class="wrap stack"><p style="font-size:17px;text-align:center;font-weight:700;color:#4F4556">1 = a little today &nbsp;·&nbsp; 5 = very well</p>
+    <main class="wrap stack"><p style="font-size:17px;text-align:center;font-weight:700;color:#4D4A66">1 = a little today &nbsp;·&nbsp; 5 = very well</p>
     <form class="card" style="padding:6px 18px" onsubmit="return false">${sets}</form>
     <div><label for="thoughts" class="lbl" style="margin-top:0">Thoughts today <span class="muted" style="font-weight:600">(optional)</span></label>
     <textarea id="thoughts" class="field" rows="4" data-inp="refl">${esc(d.thoughts)}</textarea></div>
@@ -602,8 +709,8 @@ function viewMinistering() {
 function viewLoading(err) {
   if (err) return `<main class="center">${FLOWER}<h1 style="font-size:26px;margin-top:20px">Couldn't load your goals</h1>
     <p class="muted" style="margin-top:10px">Check the internet connection, then try again.</p>
-    <button class="btn main" style="margin-top:22px;--ac:#5A4790" data-act="retry">Try again</button>
-    <button class="link" style="margin-top:12px;--ac:#4A5A8C" data-act="signout">Sign out</button></main>`;
+    <button class="btn main" style="margin-top:22px" data-act="retry">Try again</button>
+    <button class="link" style="margin-top:12px" data-act="signout">Sign out</button></main>`;
   return `<main class="center">${FLOWER}<p style="margin-top:18px;font-weight:700;color:var(--muted)">Loading…</p></main>`;
 }
 function viewSetup() {
@@ -645,7 +752,7 @@ async function changeDate(d) {
   render();
 }
 async function loadPast() {
-  const { data, error } = await sb.from('reflections').select('*').order('ref_date', { ascending: false }).limit(90);
+  const { data, error } = await api.from('reflections').select('*').order('ref_date', { ascending: false }).limit(90);
   if (error) return fail(error);
   S.past = data; render();
 }
@@ -665,10 +772,10 @@ async function saveForm(btn) {
   const row = { name, track: f.track, amount: f.track === 'check' ? null : amount, period: f.track === 'count' ? 'day' : f.period, times: (f.track === 'count' || f.period === 'day') ? 1 : times };
   btn.disabled = true;
   let res;
-  if (f.id) res = await sb.from('goals').update(row).eq('id', f.id).select().single();
+  if (f.id) res = await api.from('goals').update(row).eq('id', f.id).select().single();
   else {
     const max = Math.max(0, ...S.goals.filter(g => g.section === f.section).map(g => g.sort_order || 0));
-    res = await sb.from('goals').insert({ ...row, section: f.section, grp: f.grp || null, sort_order: max + 1 }).select().single();
+    res = await api.from('goals').insert({ ...row, section: f.section, grp: f.grp || null, sort_order: max + 1 }).select().single();
   }
   if (res.error) { btn.disabled = false; return fail(res.error); }
   const i = S.goals.findIndex(g => g.id === res.data.id);
@@ -679,7 +786,7 @@ async function saveForm(btn) {
 async function stopGoal() {
   const f = S.form;
   if (!confirm(`Stop tracking "${f.name}"? Past entries are kept.`)) return;
-  const { error } = await sb.from('goals').update({ active: false }).eq('id', f.id);
+  const { error } = await api.from('goals').update({ active: false }).eq('id', f.id);
   if (error) return fail(error);
   S.goals = S.goals.filter(g => g.id !== f.id); S.form = null;
   toast('Goal stopped');
@@ -688,7 +795,7 @@ async function stopGoal() {
 async function saveReflection(btn) {
   const d = draft();
   btn.disabled = true;
-  const { data, error } = await sb.from('reflections').upsert({ user_id: S.user.id, ref_date: d.date, scores: d.scores, thoughts: d.thoughts || null, updated_at: new Date().toISOString() }, { onConflict: 'user_id,ref_date' }).select().single();
+  const { data, error } = await api.from('reflections').upsert({ user_id: S.user.id, ref_date: d.date, scores: d.scores, thoughts: d.thoughts || null, updated_at: new Date().toISOString() }, { onConflict: 'user_id,ref_date' }).select().single();
   btn.disabled = false;
   if (error) return fail(error);
   S.refl[d.date] = data; toast('Reflection saved');
@@ -697,21 +804,21 @@ async function saveReflection(btn) {
 async function addPerson() {
   const name = $('#np-name').value.trim(), every_days = +$('#np-freq').value;
   if (!name) return toast('Type a name first.');
-  const { data, error } = await sb.from('people').insert({ name, every_days, sort_order: S.people.length + 1 }).select().single();
+  const { data, error } = await api.from('people').insert({ name, every_days, sort_order: S.people.length + 1 }).select().single();
   if (error) return fail(error);
   S.people.push(data); toast(`${name} added`); render();
 }
 async function updatePerson(id, fields) {
   const p = S.people.find(x => x.id === id); if (!p) return;
   Object.assign(p, fields);
-  const { error } = await sb.from('people').update(fields).eq('id', id);
+  const { error } = await api.from('people').update(fields).eq('id', id);
   if (error) return fail(error);
   toast('Saved');
 }
 async function removePerson(id) {
   const p = S.people.find(x => x.id === id); if (!p) return;
   if (!confirm(`Remove ${p.name} from your list?`)) return;
-  const { error } = await sb.from('people').update({ active: false }).eq('id', id);
+  const { error } = await api.from('people').update({ active: false }).eq('id', id);
   if (error) return fail(error);
   S.people = S.people.filter(x => x.id !== id); render();
 }
@@ -720,7 +827,7 @@ async function saveContact(btn) {
   if (!m.person) return toast('Choose who you contacted.');
   if (!m.date) return toast('Choose a date.');
   btn.disabled = true;
-  const { data, error } = await sb.from('contacts').insert({ person_id: m.person, kind: m.kind, contact_date: m.date, notes: m.notes.trim() || null }).select().single();
+  const { data, error } = await api.from('contacts').insert({ person_id: m.person, kind: m.kind, contact_date: m.date, notes: m.notes.trim() || null }).select().single();
   btn.disabled = false;
   if (error) return fail(error);
   S.contacts.unshift(data);
@@ -730,7 +837,7 @@ async function saveContact(btn) {
 }
 async function delContact(id) {
   if (!confirm('Remove this entry?')) return;
-  const { error } = await sb.from('contacts').delete().eq('id', id);
+  const { error } = await api.from('contacts').delete().eq('id', id);
   if (error) return fail(error);
   S.contacts = S.contacts.filter(c => c.id !== id); render();
 }
