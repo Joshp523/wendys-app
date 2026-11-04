@@ -100,17 +100,21 @@ fieldset.attr .scale{clear:both;padding-top:10px;margin-top:0}
 .tile .nm{font-family:Lora,Georgia,serif;font-size:21px;font-weight:600;line-height:1.15}
 .tile .st{font-size:16px;font-weight:800}
 .center{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 28px;text-align:center}
-.login{max-width:440px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 72px) 28px 40px;display:flex;flex-direction:column;align-items:center}
-.login form{width:100%;display:flex;flex-direction:column;gap:20px;margin-top:36px}
+.login{max-width:440px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 28px) 24px 32px;display:flex;flex-direction:column;align-items:center}
+.login form{width:100%;display:flex;flex-direction:column;gap:14px;margin-top:22px}
+.login .t{font-size:34px;margin-top:10px}
+.after{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 18px;margin-top:12px}
+@media (max-height:740px){.login .art{width:120px}.login .t{font-size:30px;margin-top:6px}.login form{margin-top:16px;gap:12px}}
+@media (max-height:620px){.login{padding-top:calc(env(safe-area-inset-top) + 12px)}.login .art{width:76px}.login .t{font-size:26px}.login form{gap:10px;margin-top:12px}.login label.f{gap:4px}.login .field{height:50px}.login button.btn.main{min-height:52px !important}.after{margin-top:8px}}
 .login label.f{display:flex;flex-direction:column;gap:8px;font-weight:800;font-size:18px;text-align:left}
 .msg{font-size:17px;font-weight:700;padding:12px 14px;border-radius:12px;background:#F3E1EC;color:#7E3D62}
 .msg.good{background:#E5EED6;color:#4A6227}
 #toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#3B3952;color:#fff;padding:14px 22px;border-radius:14px;font-weight:700;font-size:17px;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;max-width:90vw;text-align:center;z-index:10}
 #toast.show{opacity:1;transform:translate(-50%,0)}
-.art{display:block;width:170px;height:auto}
-.tourbtn{margin-top:26px;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--field);background:transparent;font:700 16px Nunito,sans-serif;color:var(--muted);cursor:pointer}
+.art{display:block;width:150px;height:auto}
+.tourbtn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--field);background:transparent;font:700 16px Nunito,sans-serif;color:var(--muted);cursor:pointer}
 .tourbar{position:sticky;top:0;z-index:5;background:#3B3952;color:#fff;padding:calc(env(safe-area-inset-top) + 6px) 16px 6px}
-.tourbar .in{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:16px;font-weight:700}
+.tourbar .in{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:15px;font-weight:700;line-height:1.25}
 .tourbar button{flex:none;min-height:40px;padding:0 16px;border-radius:999px;border:0;background:#fff;color:#3B3952;font:800 16px Nunito,sans-serif;cursor:pointer}
 body.tour .hd{padding-top:8px}
 body.tour .top{padding-top:18px !important}
@@ -329,7 +333,10 @@ const S = {
 };
 
 let Q = Promise.resolve();               // saves happen one at a time, in order
-function queue(fn) { Q = Q.then(fn).catch(fail); }
+function queue(fn) {
+  const db = api, tour = S.tour;         // a save always goes to the place it was made (tour or real), even if that changes meanwhile
+  Q = Q.then(() => fn(db)).catch(e => { if (S.tour === tour && api === db) fail(e); else console.error(e); });
+}
 function fail(e) {
   console.error(e);
   toast("Couldn't save — check the internet connection and try again.");
@@ -409,17 +416,17 @@ const dots = (v, t) => `<div class="dots" aria-hidden="true">${Array.from({ leng
 function addLog(g, fields) {
   const row = { key: 'k' + Math.random().toString(36).slice(2), id: null, goal_id: g.id, log_date: S.date, minutes: null, count: null, created_at: new Date().toISOString(), ...fields };
   S.logs.push(row); render();
-  queue(async () => {
-    const { data, error } = await api.from('logs').insert({ goal_id: g.id, log_date: row.log_date, minutes: row.minutes, count: row.count }).select().single();
+  queue(async db => {
+    const { data, error } = await db.from('logs').insert({ goal_id: g.id, log_date: row.log_date, minutes: row.minutes, count: row.count }).select().single();
     if (error) throw error;
     row.id = data.id;
   });
 }
 function delLog(row) {
   S.logs = S.logs.filter(x => x !== row); render();
-  queue(async () => {
+  queue(async db => {
     if (!row.id) return;
-    const { error } = await api.from('logs').delete().eq('id', row.id);
+    const { error } = await db.from('logs').delete().eq('id', row.id);
     if (error) throw error;
   });
 }
@@ -432,9 +439,9 @@ function setCount(g, v) {
   const row = S.logs.find(l => l.goal_id === g.id && l.log_date === S.date);
   if (!row) { if (v > 0) addLog(g, { count: v }); else render(); return; }
   row.count = v; render();
-  queue(async () => {
+  queue(async db => {
     if (!row.id) return;
-    const { error } = await api.from('logs').update({ count: row.count }).eq('id', row.id);
+    const { error } = await db.from('logs').update({ count: row.count }).eq('id', row.id);
     if (error) throw error;
   });
 }
@@ -542,7 +549,7 @@ function recentCard(goals) {
 function viewLogin() {
   const keep = localStorage.getItem(KEEP) !== '0';
   const m = S.loginMsg;
-  return `<main class="login">${FLOWER}<h1 style="font-size:36px;margin-top:22px">${esc(NAME)}'s Goals</h1>
+  return `<main class="login">${FLOWER}<h1 class="t">${esc(NAME)}'s Goals</h1>
     <form id="loginform" novalidate>
       ${m ? `<p class="msg${m.good ? ' good' : ''}" role="alert">${esc(m.text)}</p>` : ''}
       <label class="f">Email<input id="email" class="field" type="email" autocomplete="email" autocapitalize="off" required></label>
@@ -550,7 +557,8 @@ function viewLogin() {
       <label style="display:flex;align-items:center;gap:12px;font-size:18px;min-height:44px"><input id="keep" type="checkbox" ${keep ? 'checked' : ''}> Keep me signed in</label>
       <button class="btn main" type="submit" style="min-height:60px;font-size:20px">Sign in</button>
     </form>
-    <button class="link" data-act="forgot" style="margin-top:18px;font-size:18px">Forgot password?</button></main>`;
+    <div class="after"><button class="link" data-act="forgot" style="font-size:17px">Forgot password?</button>
+    <button class="tourbtn" data-act="tour">Just visiting? Take a tour</button></div></main>`;
 }
 function viewRecovery() {
   return `<main class="login">${FLOWER}<h1 style="font-size:30px;margin-top:22px">Choose a new password</h1>
@@ -573,10 +581,10 @@ function viewToday() {
     const href = s.key === 'ministering' ? '#/ministering' : '#/s/' + s.key;
     return `<a href="${href}" class="tile" style="background:${s.bg}">${icon(s.icon, s.fg, 36)}<span class="nm">${s.name}</span><span class="st" style="color:${s.fg}">${st}</span></a>`;
   }).join('');
-  return `<main class="wrap" style="padding-top:calc(env(safe-area-inset-top) + 18px);padding-bottom:40px">
+  return `<main class="wrap top" style="padding-top:calc(env(safe-area-inset-top) + 18px);padding-bottom:40px">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><p style="font-size:18px;font-weight:700;color:var(--muted)">${longDate(S.date)}</p>
-    <button class="link" data-act="signout">Sign out</button></div>
-    <h1 style="font-size:34px;margin-top:4px">${greet}, ${esc(NAME)}</h1><div class="tiles">${tiles}</div></main>`;
+    ${S.tour ? '' : '<button class="link" data-act="signout">Sign out</button>'}</div>
+    <h1 style="font-size:34px;margin-top:4px">${greet}${S.tour ? '' : ', ' + esc(NAME)}</h1><div class="tiles">${tiles}</div></main>`;
 }
 function viewSection(key) {
   const sec = SEC[key]; if (!sec) return viewToday();
@@ -736,6 +744,8 @@ function render() {
     else if (r.a === 'goal' && S.form) html = viewGoalForm();
     else html = viewToday();
   }
+  document.body.classList.toggle('tour', S.tour);
+  if (S.tour) html = `<div class="tourbar" role="region" aria-label="Tour"><div class="in"><span>Tour · made-up goals, nothing is saved</span><button data-act="exittour">Exit tour</button></div></div>` + html;
   app.innerHTML = html;
 }
 async function onRoute() {
@@ -881,6 +891,8 @@ document.addEventListener('click', e => {
     case 'mkind': S.mform.kind = el.dataset.v; return render();
     case 'savecontact': return saveContact(el);
     case 'delcontact': return delContact(id);
+    case 'tour': return startTour();
+    case 'exittour': return exitTour();
     case 'retry': return start();
     case 'forgot': return forgot();
     case 'signout': return signOut();
@@ -931,7 +943,24 @@ async function forgot() {
   S.loginMsg = error ? { text: "Couldn't send the email. Please try again later." } : { text: 'Check your email for a link to choose a new password.', good: true };
   render(); $('#email').value = email;
 }
+function resetData() {
+  Object.assign(S, { loaded: false, loadError: null, date: todayStr(), goals: [], logs: [], refl: {}, people: [], contacts: [],
+    editGroups: {}, other: {}, form: null, editPeople: false, mform: null, draft: null, past: null, loginMsg: null });
+}
+function startTour() {
+  resetData();
+  api = demoDB(); S.tour = true; S.user = { id: 'tour' };
+  history.replaceState(null, '', location.pathname + '#/today');
+  start();
+}
+function exitTour() {
+  resetData();
+  api = sb; S.tour = false; S.user = S.realUser;   // a real session, if any, picks up exactly where it was
+  history.replaceState(null, '', location.pathname);
+  if (S.user) start(); else render();
+}
 async function signOut() {
+  if (S.tour) return exitTour();
   if (!confirm('Sign out?')) return;
   await sb.auth.signOut();
 }
@@ -947,6 +976,8 @@ if (sb) {
     if (ev === 'PASSWORD_RECOVERY') S.recovery = true;
     const u = session ? session.user : null;
     setTimeout(() => {
+      S.realUser = u;
+      if (S.tour) return;   // a tour in progress is left alone; exiting it returns to this session
       if (u && (!S.user || S.user.id !== u.id)) { S.user = u; if (!S.recovery) start(); else render(); }
       else if (!u) { S.user = null; S.loaded = false; S.goals = []; S.logs = []; S.people = []; S.contacts = []; S.refl = {}; render(); }
       else render();
